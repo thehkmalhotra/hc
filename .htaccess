@@ -1,0 +1,11 @@
+RewriteEngine On
+DirectoryIndex login.php
+RewriteRule ^([a-z\-]+)$ $1.php [L,QSA]
+RewriteRule ^([a-z]+)/([a-z]+)$ creator-dashboard.php [NC,L]
+RewriteRule ^([a-z]+)/([a-z]+)$ $1.php?role=$2 [NC,L]
+
+#404 Error Redirect
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ - [R=404,L]
+ErrorDocument 404 /hc/error.php
